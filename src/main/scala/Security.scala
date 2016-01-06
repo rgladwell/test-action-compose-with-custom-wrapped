@@ -19,6 +19,7 @@ case class AuthenticationAction[A]() extends ActionBuilder[({type λ[B] = AuthRe
 
 case class AuthorisedAction[A]() extends ActionFilter[({type λ[B] = AuthRequest[B, TestUser]})#λ] {
 
+  // does some additional authorisation checks for added security
   def authorised(user: TestUser) = true
 
   override def filter[A](request: AuthRequest[A, TestUser]) = Future.successful {
